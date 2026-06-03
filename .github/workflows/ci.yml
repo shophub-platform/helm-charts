@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main, develop]
+
+permissions:
+  contents: read
+
+jobs:
+  commitlint:
+    name: Conventional Commits
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: wagoid/commitlint-github-action@v6
+
+  helm-lint:
+    name: Helm Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: azure/setup-helm@v4
+      - name: Lint sve chart-ove
+        run: |
+          shopt -s nullglob
+          charts=(charts/*/)
+          if [ ${#charts[@]} -eq 0 ]; then
+            echo "Još nema chart-ova — skeleton prolazi (F0)."
+            exit 0
+          fi
+          for c in "${charts[@]}"; do
+            echo "== helm lint $c =="
+            helm lint "$c"
+          done
