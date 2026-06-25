@@ -25,7 +25,7 @@ jobs:
       - uses: wagoid/commitlint-github-action@v6
 
   helm-lint:
-    name: Helm Lint + Template
+    name: Helm Lint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
