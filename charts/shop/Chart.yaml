@@ -1,0 +1,13 @@
+apiVersion: v2
+name: shop
+description: Template chart za pojedinačnu Shop instancu. Koristi se interno od strane shop-operator-a.
+type: application
+version: 0.1.0
+appVersion: "0.1.0"
+keywords:
+  - shophub
+  - shop
+  - tenant
+home: https://github.com/shophub-platform/shop-operator
+maintainers:
+  - name: ShopHub Platform Team

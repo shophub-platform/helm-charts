@@ -1,0 +1,13 @@
+apiVersion: v2
+name: shop-operator
+description: Kubernetes operator koji upravlja Shop, DiscordChannel i Wallet resursima za ShopHub platformu.
+type: application
+version: 0.1.0
+appVersion: "0.1.0"
+keywords:
+  - shophub
+  - operator
+  - kubernetes
+home: https://github.com/shophub-platform/shop-operator
+maintainers:
+  - name: ShopHub Platform Team

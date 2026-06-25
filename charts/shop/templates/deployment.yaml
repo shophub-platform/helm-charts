@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "shop.name" . }}-backend
+  namespace: {{ .Values.namespace }}
+  labels:
+    {{- include "shop.labels" . | nindent 4 }}
+    app.kubernetes.io/component: backend
+spec:
+  replicas: {{ .Values.backend.replicas }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: {{ include "shop.name" . }}
+      app.kubernetes.io/component: backend
+  template:
+    metadata:
+      labels:
+        {{- include "shop.labels" . | nindent 8 }}
+        app.kubernetes.io/component: backend
+    spec:
+      containers:
+        - name: backend
+          image: {{ .Values.backend.image | quote }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.backend.port }}
+          {{- if .Values.config }}
+          envFrom:
+            - configMapRef:
+                name: {{ include "shop.name" . }}-config
+          {{- end }}
+          {{- if .Values.secrets }}
+          envFrom:
+            - secretRef:
+                name: {{ include "shop.name" . }}-secret
+          {{- end }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "shop.name" . }}-frontend
+  namespace: {{ .Values.namespace }}
+  labels:
+    {{- include "shop.labels" . | nindent 4 }}
+    app.kubernetes.io/component: frontend
+spec:
+  replicas: {{ .Values.frontend.replicas }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: {{ include "shop.name" . }}
+      app.kubernetes.io/component: frontend
+  template:
+    metadata:
+      labels:
+        {{- include "shop.labels" . | nindent 8 }}
+        app.kubernetes.io/component: frontend
+    spec:
+      containers:
+        - name: frontend
+          image: {{ .Values.frontend.image | quote }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.frontend.port }}

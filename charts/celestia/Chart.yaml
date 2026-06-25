@@ -1,0 +1,12 @@
+apiVersion: v2
+name: celestia
+description: Celestia light node za ShopHub platformu (data availability layer).
+type: application
+version: 0.1.0
+appVersion: "0.21.0"
+keywords:
+  - celestia
+  - blockchain
+  - data-availability
+maintainers:
+  - name: ShopHub Platform Team

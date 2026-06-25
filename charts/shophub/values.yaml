@@ -1,0 +1,70 @@
+replicaCount: 1
+
+backend:
+  image:
+    repository: ghcr.io/shophub-platform/shophub
+    tag: "0.1.0"
+    pullPolicy: IfNotPresent
+  port: 8080
+  jwtSecret: "change-me-in-production"
+  shopNamespace: default
+  shopUrlTemplate: "http://%s.shophub.local"
+  defaultShopImage: "ghcr.io/shophub-platform/shop:latest"
+
+frontend:
+  enabled: true
+  image:
+    repository: ghcr.io/shophub-platform/shophub-frontend
+    tag: "0.1.0"
+    pullPolicy: IfNotPresent
+  port: 80
+
+serviceAccount:
+  create: true
+  name: ""
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: true
+  className: "nginx"
+  host: "shophub.local"
+  tls: []
+
+postgresql:
+  enabled: true
+  auth:
+    username: shophub
+    password: shophub
+    database: shophub
+  primary:
+    persistence:
+      enabled: true
+      size: 1Gi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 5
+  targetCPUUtilizationPercentage: 80
+
+shopOperator:
+  enabled: true
+  image:
+    repository: ghcr.io/shophub-platform/shop-operator
+    tag: "0.1.0"
+  ingressDomain: "shophub.local"
+  walletEncryptionKey: "change-me-in-production"
+  sepoliaRpcUrl: ""
+  mockusdtAddress: ""
+  clusterDiscordWebhookUrl: ""
+
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 500m
+    memory: 256Mi

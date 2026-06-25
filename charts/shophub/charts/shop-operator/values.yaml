@@ -1,0 +1,39 @@
+replicaCount: 1
+
+image:
+  repository: ghcr.io/shophub-platform/shop-operator
+  tag: "0.1.0"
+  pullPolicy: IfNotPresent
+
+serviceAccount:
+  create: true
+  name: ""
+
+# Namespace u koji operator deploy-uje Shop resurse
+shopNamespace: default
+
+# Podrazumevana slika za shop-backend kontejner
+defaultShopImage: "ghcr.io/shophub-platform/shop:latest"
+defaultFrontendImage: "ghcr.io/shophub-platform/shop-frontend:latest"
+
+# Ingress domen za shopove (npr. 127.0.0.1.nip.io za lokalni razvoj)
+ingressDomain: "shophub.local"
+
+# Ključ za enkripciju wallet podataka (obavezan)
+walletEncryptionKey: ""
+
+# Sepolia RPC URL za blockchain listener
+sepoliaRpcUrl: ""
+mockusdtAddress: ""
+
+# Cluster-wide Discord webhook za alarme (opciono)
+clusterDiscordWebhookUrl: ""
+clusterAlertsNamespace: "monitoring"
+
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 500m
+    memory: 256Mi

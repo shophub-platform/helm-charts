@@ -1,0 +1,12 @@
+apiVersion: v2
+name: bitcoin
+description: Bitcoin full node za ShopHub platformu (on-chain verifikacija plaćanja).
+type: application
+version: 0.1.0
+appVersion: "26.0"
+keywords:
+  - bitcoin
+  - blockchain
+  - payments
+maintainers:
+  - name: ShopHub Platform Team
