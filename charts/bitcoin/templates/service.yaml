@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "bitcoin.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "bitcoin.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - name: rpc
+      port: {{ .Values.service.rpcPort }}
+      targetPort: rpc
+    - name: p2p
+      port: {{ .Values.service.p2pPort }}
+      targetPort: p2p
+  selector:
+    app.kubernetes.io/name: bitcoin
+    app.kubernetes.io/instance: {{ .Release.Name }}

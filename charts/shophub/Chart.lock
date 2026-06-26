@@ -1,0 +1,9 @@
+dependencies:
+- name: postgresql
+  repository: https://charts.bitnami.com/bitnami
+  version: 16.7.27
+- name: shop-operator
+  repository: file://charts/shop-operator
+  version: 0.1.0
+digest: sha256:a00425b5978ff5ae9252684e0b8aa1d2484fcb51ba345b50c961bbc090216f67
+generated: "2026-06-25T12:08:57.9755458+02:00"

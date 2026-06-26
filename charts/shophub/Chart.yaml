@@ -1,0 +1,22 @@
+apiVersion: v2
+name: shophub
+description: ShopHub platforma — backend API, frontend i PostgreSQL baza.
+type: application
+version: 0.1.0
+appVersion: "0.1.0"
+keywords:
+  - shophub
+  - saas
+  - ecommerce
+home: https://github.com/shophub-platform/shophub
+maintainers:
+  - name: ShopHub Platform Team
+dependencies:
+  - name: postgresql
+    version: "16.x.x"
+    repository: "https://charts.bitnami.com/bitnami"
+    condition: postgresql.enabled
+  - name: shop-operator
+    version: "0.1.0"
+    repository: "file://charts/shop-operator"
+    condition: shopOperator.enabled

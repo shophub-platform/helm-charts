@@ -1,0 +1,13 @@
+ShopHub je uspešno deploy-ovan!
+
+Backend API:
+  kubectl port-forward svc/{{ include "shophub.fullname" . }}-backend 8080:80
+
+{{- if .Values.frontend.enabled }}
+Frontend:
+  kubectl port-forward svc/{{ include "shophub.fullname" . }}-frontend 4200:80
+{{- end }}
+
+{{- if .Values.ingress.enabled }}
+Ingress: http://{{ .Values.ingress.host }}
+{{- end }}

@@ -1,0 +1,21 @@
+name: my-shop
+namespace: default
+
+backend:
+  image: ghcr.io/shophub-platform/shop:latest
+  replicas: 1
+  port: 8081
+
+frontend:
+  image: ghcr.io/shophub-platform/shop-frontend:latest
+  replicas: 1
+  port: 80
+
+ingress:
+  enabled: true
+  className: nginx
+  host: "my-shop.shophub.local"
+
+config: {}
+
+secrets: {}

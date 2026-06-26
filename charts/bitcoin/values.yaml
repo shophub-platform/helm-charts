@@ -1,0 +1,28 @@
+image:
+  repository: lncm/bitcoind
+  tag: "v26.0"
+  pullPolicy: IfNotPresent
+
+network: "testnet"
+
+service:
+  type: ClusterIP
+  rpcPort: 18332
+  p2pPort: 18333
+
+persistence:
+  enabled: true
+  size: 10Gi
+  storageClass: ""
+
+rpc:
+  user: "bitcoin"
+  password: "change-me-in-production"
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 512Mi
+  limits:
+    cpu: 1000m
+    memory: 2Gi
