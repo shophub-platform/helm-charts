@@ -46,6 +46,10 @@ spec:
             - name: MOCKUSDT_ADDRESS
               value: {{ .Values.mockusdtAddress | quote }}
             {{- end }}
+            {{- if .Values.discordGuildId }}
+            - name: DISCORD_GUILD_ID
+              value: {{ .Values.discordGuildId | quote }}
+            {{- end }}
             {{- if .Values.clusterDiscordWebhookUrl }}
             - name: CLUSTER_DISCORD_WEBHOOK_URL
               value: {{ .Values.clusterDiscordWebhookUrl | quote }}

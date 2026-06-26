@@ -59,6 +59,7 @@ shopOperator:
   walletEncryptionKey: "change-me-in-production"
   sepoliaRpcUrl: ""
   mockusdtAddress: ""
+  discordGuildId: ""
   clusterDiscordWebhookUrl: ""
 
 resources:

@@ -26,6 +26,9 @@ walletEncryptionKey: ""
 sepoliaRpcUrl: ""
 mockusdtAddress: ""
 
+# Discord Guild ID — server na koji operator kreira kanale za svaki shop (opciono)
+discordGuildId: ""
+
 # Cluster-wide Discord webhook za alarme (opciono)
 clusterDiscordWebhookUrl: ""
 clusterAlertsNamespace: "monitoring"
